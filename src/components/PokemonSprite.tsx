@@ -6,6 +6,7 @@ interface PokemonSpriteProps {
   alt?: string;
 }
 
+// Map special naming differences for Pokemon Showdown Gen 5 (Black & White) animated 2D sprites
 const SPECIAL_NAME_MAP: Record<string, string> = {
   'rotom agua': 'rotom-wash',
   'rotom_agua': 'rotom-wash',
@@ -30,22 +31,23 @@ const SPECIAL_NAME_MAP: Record<string, string> = {
   'nidoran male': 'nidoranm',
   'farfetch’d': 'farfetchd',
   "farfetch'd": 'farfetchd',
-  'porygon-z': 'porygon-z',
-  'porygon z': 'porygon-z',
+  'porygon-z': 'porygonz',
+  'porygon z': 'porygonz',
   'porygon2': 'porygon2',
 };
 
+/**
+ * Returns the authentic 2D Gen 5 (Black/White) animated GIF sprite from Showdown
+ */
 export const getPokemonAnimatedGifUrl = (pokemonName: string): string => {
   if (!pokemonName) return '';
   const clean = pokemonName.toLowerCase().trim();
   if (SPECIAL_NAME_MAP[clean]) {
-    return `https://play.pokemonshowdown.com/sprites/ani/${SPECIAL_NAME_MAP[clean]}.gif`;
+    return `https://play.pokemonshowdown.com/sprites/gen5ani/${SPECIAL_NAME_MAP[clean]}.gif`;
   }
-  const normalized = clean
-    .replace(/[.'’]/g, '')
-    .replace(/\s+/g, '')
-    .replace(/_/g, '');
-  return `https://play.pokemonshowdown.com/sprites/ani/${normalized}.gif`;
+  // Gen 5 Black/White animated 2D pixel-art sprite: alphanumeric only
+  const normalized = clean.replace(/[.'’\s_\-]/g, '');
+  return `https://play.pokemonshowdown.com/sprites/gen5ani/${normalized}.gif`;
 };
 
 export const getPokemonStaticPngUrl = (pokemonName: string): string => {
