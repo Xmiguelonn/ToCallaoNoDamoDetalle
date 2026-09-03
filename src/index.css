@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* He cambiado la fuente a Comic Neue para ese estilo de juego */
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* EL TRUCO MAESTRO: Ahora con tu verde neón #21ff00 */
+* {
+  color: #21ff00 !important;
+  /* Añadí una sombra sutil para que el texto resalte más como en la imagen */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #111827; /* Fondo oscuro similar al de tu captura */
+}
+
+/* Opcional: Esto hará que los bordes y anillos de selección 
+   también usen tu nuevo color por defecto */
+@layer base {
+  button, input, [class*="ring-"], [class*="border-"] {
+    border-color: rgba(33, 255, 0, 0.3);
+  }
+}
+
+/* Animation utilities */
+@layer utilities {
+  .animate-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .slide-in-from-top {
+    animation: slideInFromTop 0.3s ease-in-out;
+  }
+  
+  .slide-in-from-bottom {
+    animation: slideInFromBottom 0.3s ease-in-out;
+  }
+
+  /* Nueva utilidad por si quieres nombres en mayúsculas como en el juego */
+  .font-poke-retro {
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInFromTop {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInFromBottom {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
