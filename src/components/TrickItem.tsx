@@ -11,35 +11,62 @@ interface TrickItemProps {
 
 export function TrickItem({ trick, level = 0 }: TrickItemProps) {
   const hasVariants = trick.variant && trick.variant.length > 0
-  const [isExpanded, setIsExpanded] = useState(false) // Todas las variantes cerradas por defecto
-  
+  const [isExpanded, setIsExpanded] = useState(false)
+
   const toggleExpand = () => {
-    setIsExpanded(!isExpanded)
+    if (hasVariants) {
+      setIsExpanded(!isExpanded)
+    }
   }
 
   return (
     <div className="w-full">
       <div 
-        className={`p-3 rounded-lg mb-2 bg-[#1e293b] border border-gray-700 ${hasVariants ? 'cursor-pointer' : ''}`}
-        style={{ marginLeft: `${level * 1}rem` }}
+        className={`p-3.5 sm:p-4 rounded-xl mb-2 transition-all duration-200 border ${
+          hasVariants ? 'cursor-pointer select-none' : ''
+        } ${
+          isExpanded
+            ? 'bg-slate-850 border-indigo-500/60 shadow-md shadow-indigo-950/20'
+            : hasVariants
+            ? 'bg-slate-800/80 hover:bg-slate-800 border-slate-700/80 hover:border-slate-600'
+            : 'bg-slate-850/60 border-slate-750/60'
+        }`}
+        style={{ marginLeft: level > 0 ? `${level * 0.75}rem` : undefined }}
         onClick={hasVariants ? toggleExpand : undefined}
       >
-        <div className="flex items-start gap-2">
+        <div className="flex items-start gap-3">
           {hasVariants ? (
-            isExpanded ? (
-              <ChevronDown className="w-4 h-4 text-blue-400 mt-1 flex-shrink-0 transition-transform" />
-            ) : (
-              <ChevronRight className="w-4 h-4 text-blue-400 mt-1 flex-shrink-0 transition-transform" />
-            )
+            <button
+              type="button"
+              className="mt-0.5 p-1 rounded-md bg-indigo-950/70 border border-indigo-500/30 text-indigo-300 hover:text-white transition-colors flex-shrink-0"
+              aria-label={isExpanded ? "Contraer variantes" : "Expandir variantes"}
+            >
+              {isExpanded ? (
+                <ChevronDown className="w-4 h-4 transition-transform duration-200" />
+              ) : (
+                <ChevronRight className="w-4 h-4 transition-transform duration-200" />
+              )}
+            </button>
           ) : (
-            <div className="w-4 h-4 mt-1 flex-shrink-0" />
+            <span className="w-2 h-2 rounded-full bg-emerald-400 mt-2 flex-shrink-0 shadow-sm shadow-emerald-400/50" />
           )}
-          <span className="text-sm leading-relaxed">{trick.detail}</span>
+
+          <div className="flex-1 min-w-0">
+            <p className="text-sm sm:text-base leading-relaxed text-slate-100 font-normal">
+              {trick.detail}
+            </p>
+
+            {hasVariants && (
+              <span className="inline-flex items-center gap-1 mt-1.5 text-xs text-indigo-300 font-medium hover:underline">
+                {isExpanded ? 'Ocultar ramas alternativas' : `${trick.variant.length} variantes disponibles`}
+              </span>
+            )}
+          </div>
         </div>
       </div>
 
       {hasVariants && isExpanded && (
-        <div className="pl-4 border-l-2 border-gray-600 animate-in slide-in-from-top duration-200">
+        <div className="pl-3 sm:pl-5 border-l-2 border-indigo-500/40 ml-4 my-2.5 space-y-2 animate-in slide-in-from-top duration-200">
           {trick.variant.map((variant, index) => (
             <TrickItem 
               key={index} 

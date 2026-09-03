@@ -1,71 +1,131 @@
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* He cambiado la fuente a Comic Neue para ese estilo de juego */
-  font-family: 'Comic Neue', 'Comic Sans MS', cursive, system-ui, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* EL TRUCO MAESTRO: Ahora con tu verde neón #21ff00 */
-* {
-  color: #21ff00 !important;
-  /* Añadí una sombra sutil para que el texto resalte más como en la imagen */
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #111827; /* Fondo oscuro similar al de tu captura */
+  background-color: #0b0f19;
+  color: #f1f5f9;
+  overflow-x: hidden;
+  selection-background-color: #10b981;
+  selection-color: #ffffff;
 }
 
-/* Opcional: Esto hará que los bordes y anillos de selección 
-   también usen tu nuevo color por defecto */
-@layer base {
-  button, input, [class*="ring-"], [class*="border-"] {
-    border-color: rgba(33, 255, 0, 0.3);
-  }
+::selection {
+  background: rgba(16, 185, 129, 0.3);
+  color: #ffffff;
 }
 
-/* Animation utilities */
+/* Custom modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+  border: 2px solid #0b0f19;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Custom utilities */
 @layer utilities {
+  .glass-panel {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-card-hover {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card-hover:hover {
+    background: rgba(30, 41, 59, 0.95);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  }
+
+  .glow-emerald {
+    box-shadow: 0 0 20px -3px rgba(16, 185, 129, 0.35);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px -3px rgba(6, 182, 212, 0.35);
+  }
+
+  .glow-indigo {
+    box-shadow: 0 0 20px -3px rgba(99, 102, 241, 0.35);
+  }
+
   .animate-in {
-    animation: fadeIn 0.3s ease-in-out;
+    animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   
   .slide-in-from-top {
-    animation: slideInFromTop 0.3s ease-in-out;
+    animation: slideInFromTop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   
   .slide-in-from-bottom {
-    animation: slideInFromBottom 0.3s ease-in-out;
-  }
-
-  /* Nueva utilidad por si quieres nombres en mayúsculas como en el juego */
-  .font-poke-retro {
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    animation: slideInFromBottom 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { 
+    opacity: 0; 
+  }
+  to { 
+    opacity: 1; 
+  }
 }
 
 @keyframes slideInFromTop {
-  from { transform: translateY(-20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from { 
+    transform: translateY(-12px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
 }
 
 @keyframes slideInFromBottom {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from { 
+    transform: translateY(12px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
 }
