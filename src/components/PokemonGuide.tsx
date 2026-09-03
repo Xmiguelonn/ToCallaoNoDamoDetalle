@@ -4,6 +4,7 @@ import { ChevronDown, ChevronUp } from "lucide-react"
 // Import interfaces
 import type { Pokemon } from "../interfaces/Pokemon"
 import type { Region } from "../interfaces/Region"
+import regionConfigData from "../data/config-region.json"
 
 // Import hooks
 import { useDynamicImports } from "../hooks/useDynamicImports"
@@ -27,89 +28,28 @@ export default function PokemonGuide() {
   // Referencia para el scroll automático
   const detailsRef = useRef<HTMLDivElement>(null)
 
-  const { getPokemonFiles } = useDynamicImports()
+  const { getLeaderPokemons } = useDynamicImports()
 
-  // Load region config
+  // Load region and pokemon data
   useEffect(() => {
-    const loadRegionConfig = async () => {
-      try {
-        const regionConfigModule = await import("../data/config-region.json")
-        setRegions(regionConfigModule.regions || [])
-      } catch (error) {
-        console.error("Error loading region config:", error)
-      }
-    }
-
-    loadRegionConfig()
-  }, [])
-
-  // Load pokemon data (FIXED)
-  useEffect(() => {
-    const loadPokemonData = async () => {
-      if (regions.length === 0 || regionsLoaded) return
-
-      const updatedRegions: Region[] = []
-
-      for (const region of regions) {
-        const updatedLeaders = []
-
-        for (const leader of region.leaders) {
-          try {
-            const pokemonFiles = await getPokemonFiles(region.id, leader.id)
-
-            const pokemons = await Promise.all(
-              pokemonFiles.map(async (file) => {
-                try {
-                  const module = await import(
-                    `../data/${region.id}/${leader.id}/${file.replace(".json", "")}.json`
-                  )
-
-                  const data = module.default || module
-
-                  return {
-                    ...data,
-                    id:
-                      data.id ||
-                      data.name?.toLowerCase() ||
-                      file.replace(".json", ""),
-                  }
-                } catch (error) {
-                  console.error(`Error importing ${file}:`, error)
-                  return null
-                }
-              })
-            )
-
-            updatedLeaders.push({
-              ...leader,
-              pokemons: pokemons.filter(Boolean),
-            })
-          } catch (error) {
-            console.error(
-              `Error loading pokemon data for ${leader.name}:`,
-              error
-            )
-
-            updatedLeaders.push({
-              ...leader,
-              pokemons: [],
-            })
-          }
-        }
-
-        updatedRegions.push({
-          ...region,
-          leaders: updatedLeaders,
-        })
-      }
+    try {
+      const baseRegions = ((regionConfigData as any).regions || []) as Region[]
+      const updatedRegions: Region[] = baseRegions.map((region) => ({
+        ...region,
+        leaders: (region.leaders || []).map((leader) => ({
+          ...leader,
+          pokemons: getLeaderPokemons(region.id, leader.id),
+        })),
+      }))
 
       setRegions(updatedRegions)
       setRegionsLoaded(true)
       setLoading(false)
+    } catch (error) {
+      console.error("Error loading pokemon data:", error)
+      setLoading(false)
     }
-
-    loadPokemonData()
-  }, [regions, regionsLoaded, getPokemonFiles])
+  }, [getLeaderPokemons])
 
   const handleRegionClick = (regionId: string) => {
     if (expandedRegion === regionId) {
