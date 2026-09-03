@@ -22,7 +22,6 @@ export default function PokemonGuide() {
   const [lightMode, setLightMode] = useState(false)
   const [showTips, setShowTips] = useState(false)
   const [regions, setRegions] = useState<Region[]>([])
-  const [regionsLoaded, setRegionsLoaded] = useState(false)
   const [loading, setLoading] = useState(true)
 
   // Referencia para el scroll automático
@@ -43,7 +42,6 @@ export default function PokemonGuide() {
       }))
 
       setRegions(updatedRegions)
-      setRegionsLoaded(true)
       setLoading(false)
     } catch (error) {
       console.error("Error loading pokemon data:", error)
