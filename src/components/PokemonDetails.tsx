@@ -1,5 +1,6 @@
 import type { Pokemon } from '../interfaces/Pokemon';
 import { TrickItem } from './TrickItem';
+import { PokemonSprite } from './PokemonSprite';
 
 interface PokemonDetailsProps {
   pokemon: Pokemon;
@@ -11,12 +12,11 @@ export const PokemonDetails = ({ pokemon }: PokemonDetailsProps) => {
       {/* Strategy Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 mb-5 border-b border-slate-800">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700/80 flex items-center justify-center p-1 overflow-hidden shadow-inner">
-            <img
-              src={`${import.meta.env.BASE_URL}images/pokemon/${pokemon.name.toLowerCase().replace(/ /g, '_')}.png`}
+          <div className="w-14 h-14 rounded-xl bg-slate-800 border border-slate-700/80 flex items-center justify-center p-1.5 overflow-hidden shadow-inner">
+            <PokemonSprite
+              name={pokemon.name}
               alt={pokemon.name}
               className="h-full w-auto object-contain"
-              style={{ imageRendering: 'pixelated' }}
             />
           </div>
           <div>

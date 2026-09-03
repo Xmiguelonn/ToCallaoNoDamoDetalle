@@ -1,4 +1,5 @@
 import type { Pokemon } from '../interfaces/Pokemon';
+import { PokemonSprite } from './PokemonSprite';
 
 interface PokemonCardProps {
   pokemon: Pokemon;
@@ -22,13 +23,10 @@ export const PokemonCard = ({ pokemon, isSelected, onClick }: PokemonCardProps) 
         {isSelected && (
           <div className="absolute inset-0 bg-emerald-500/10 rounded-t-xl" />
         )}
-        <img
-          src={`${import.meta.env.BASE_URL}images/pokemon/${pokemon.name.toLowerCase().replace(/ /g, '_')}.png`}
+        <PokemonSprite
+          name={pokemon.name}
           alt={pokemon.name}
-          className="h-16 sm:h-20 w-auto object-contain transition-transform duration-200 group-hover:scale-110"
-          style={{ 
-            imageRendering: 'pixelated',
-          }} 
+          className="h-16 sm:h-20 w-auto object-contain transition-transform duration-200 group-hover:scale-115"
         />
       </div>
 
