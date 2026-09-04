@@ -5,14 +5,14 @@
   "initialMove": "🪨Trampa Rocas🪨",
   "tricks": [
     {
-      "detail": "Se queda → Teletransporte",
+      "detail": "Se queda ➜ Teletransporte",
       "variant": [
         {
-          "detail": "Se queda → Poliwrath, +6 +2 🥊Puño Drenaje a Magmortar🥊",
+          "detail": "Se queda ➜ Poliwrath, +6 +2 🥊Puño Drenaje a Magmortar🥊",
           "variant": []
         },
         {
-          "detail": "Sale Crobat → Mira abajo ↓",
+          "detail": "Sale Crobat ➜ Mira abajo ↓",
           "variant": []
         }
       ]
