@@ -8,7 +8,7 @@
       "detail": "Puño Dinámico ➜ Cambia a Slowbro, bostezo",
       "variant": [
         {
-          "detail": "Vendetta → bostezo, sale metagross/eelektross → Sacrifica a Politoed , Poliwrath +6🐸🥊",
+          "detail": "Vendetta ➜ bostezo, sale metagross/eelektross ➜ Sacrifica a Politoed , Poliwrath +6🐸🥊",
           "variant": []
         },
         {
@@ -40,40 +40,40 @@
               ]
             },
             {
-              "detail": "◉ Electivire → Chansey encanto y frente a Aggron usa Amortiguador → Machamp → Gengar Otra Vez +4 + PREC X",
+              "detail": "◉ Electivire ➜ Chansey encanto y frente a Aggron usa Amortiguador ➜ Machamp ➜ Gengar Otra Vez +4 + PREC X",
               "variant": []
             },
             {
-              "detail": "◉ Metagross → Sacrifica a Politoed, Poliwrath +6🐸🥊",
+              "detail": "◉ Metagross ➜ Sacrifica a Politoed, Poliwrath +6🐸🥊",
               "variant": []
             }
           ]
         },
         {
-          "detail": "Puño Hielo → Bostezo frente a Metagross → Sacrifica a Politoed , Poliwrath +6🐸🥊",
+          "detail": "Puño Hielo ➜ Bostezo frente a Metagross ➜ Sacrifica a Politoed , Poliwrath +6🐸🥊",
           "variant": []
         }
       ]
     },
     {
-      "detail": "Puño Drenaje + Llamaesfera → Gengar, otra vez, +2",
+      "detail": "Puño Drenaje + Llamaesfera ➜ Gengar, otra vez, +2",
       "variant": [
         {
-          "detail": "Se queda → Derrótalo → Steelix → Slowbro, bostezo",
+          "detail": "Se queda ➜ Derrótalo ➜ Steelix ➜ Slowbro, bostezo",
           "variant": [
             {
-              "detail": "Se queda → Protección → Bostezo → Heracross → Chansey → Gengar +4 + precisión X",
+              "detail": "Se queda ➜ Protección ➜ Bostezo ➜ Heracross ➜ Chansey ➜ Gengar +4 + precisión X",
               "variant": []
             },
             {
-              "detail": "◉ Heracross → Chansey → Steelix → Trampa rocas",
+              "detail": "◉ Heracross ➜ Chansey ➜ Steelix ➜ Trampa rocas",
               "variant": [
                 {
-                  "detail": "◉ Machamp → Gengar → Chansey → Staraptor → Gengar +2 + precisión X",
+                  "detail": "◉ Machamp ➜ Gengar ➜ Chansey ➜ Staraptor ➜ Gengar +2 + precisión X",
                   "variant": []
                 },
                 {
-                  "detail": "◉ Staraptor → Slowbro → Lucario → Volcarona +2",
+                  "detail": "◉ Staraptor ➜ Slowbro ➜ Lucario ➜ Volcarona +2",
                   "variant": []
                 }
               ]
@@ -81,20 +81,20 @@
           ]
         },
         {
-          "detail": "◉ Metagross → Slowbro → Lucario → Volcarona +2",
+          "detail": "◉ Metagross ➜ Slowbro ➜ Lucario ➜ Volcarona +2",
           "variant": []
         }
       ]
     },
     {
-      "detail": "Puño Drenaje (Sin llamaesfera) → Slowbro, Bostezo",
+      "detail": "Puño Drenaje (Sin llamaesfera) ➜ Slowbro, Bostezo",
       "variant": [
         {
-          "detail": "◉ Golem → Teletransporte → Chansey, trampa rocas. Sale Metagross → Gengar, Otra Vez, +2 derrota, sale Golem, otro maquinación y derrotalos.",
+          "detail": "◉ Golem ➜ Teletransporte ➜ Chansey, trampa rocas. Sale Metagross ➜ Gengar, Otra Vez, +2 derrota, sale Golem, otro maquinación y derrotalos.",
           "variant": []
         },
         {
-          "detail": "◉ Eelektross/Torrterra → Sacrifica a Politoed, Poliwrath +6",
+          "detail": "◉ Eelektross/Torrterra ➜ Sacrifica a Politoed, Poliwrath +6",
           "variant": []
         }
       ]
